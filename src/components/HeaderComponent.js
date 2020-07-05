@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
 
+  /* Constructor for the Header component */
   constructor(props) {
     super(props);
 
