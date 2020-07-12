@@ -1,4 +1,3 @@
-import { DISHES } from '../shared/dishes';
 import { LEADERS } from '../shared/Leaders';
 
 export const Leaders = (state = LEADERS, action) => {
