@@ -1,6 +1,8 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../shared/basedURL';
+import { Fade, Stagger } from 'react-animation-components';
 
 function About(props) {
 
@@ -8,7 +10,7 @@ function About(props) {
     return (
       <Media>
 
-        <img className="mr-5" src={leader.image} alt="alberto leader" />
+        <img className="mr-5" src={baseUrl + leader.image} alt="alberto leader" />
         <div>
           <h3>{leader.name}</h3>
           <h6>{leader.designation}</h6>
@@ -20,7 +22,11 @@ function About(props) {
 
   const leaders = props.leaders.map((leader) => {
     return (
-      <RenderLeader leader={leader} />
+      <Stagger in>
+        <Fade in>
+          <RenderLeader leader={leader} />
+        </Fade>
+      </Stagger>
     );
   });
 

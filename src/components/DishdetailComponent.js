@@ -130,14 +130,10 @@ function RenderDish({ dish }) {
 function RenderComments({ comments, postComment, dishId }) {
   const cmnts = comments.map((comment) => {
     return (
-      <Stagger in>
-        <ul className="list-unstyled">
-          <Fade in>
-            <li>{comment.comment}</li>
-            <li>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</li>
-          </Fade>
-        </ul>
-      </Stagger>
+      <ul className="list-unstyled">
+        <li>{comment.comment}</li>
+        <li>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</li>
+      </ul>
     );
   });
 
@@ -145,7 +141,11 @@ function RenderComments({ comments, postComment, dishId }) {
     <div className="col-12 col-md-5 m-1">
       <h4>Comments</h4>
       {cmnts}
-      <CommentForm dishId={dishId} postComment={postComment} />
+      <Stagger in>
+        <Fade in>
+          <CommentForm dishId={dishId} postComment={postComment} />
+        </Fade>
+      </Stagger>
     </div>
   );
 };
